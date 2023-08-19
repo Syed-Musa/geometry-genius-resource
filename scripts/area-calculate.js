@@ -38,19 +38,23 @@ function calculateRectangleArea(){
 
 function calculateParallelogramArea(){
     const base = getInputValue('parallelogram-base');
-    console.log(base);
-
+    
     const height = getInputValue('parallelogram-height');
-    console.log(height);
 
     const area = base * height;
+    setElementInnerText('parallelogram-area', area);
 }
 
-
-// reusable get input value field in number
+// reuseable get input value field in number
 function getInputValue(fieldId){
     const inputField = document.getElementById(fieldId);
     const inputValueText = inputField.value;
     const value = parseFloat(inputValueText);
     return value;
+}
+
+
+function setElementInnerText(fieldId, area){
+    const element = document.getElementById(fieldId);
+    element.innerText = area;
 }
