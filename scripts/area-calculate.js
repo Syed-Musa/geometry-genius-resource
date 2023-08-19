@@ -1,3 +1,4 @@
+// Triangle Calculation
 function calculatetriangleArea(){
     const baseField = document.getElementById('triangle-base');
     const baseValueText = baseField.value;
@@ -15,9 +16,11 @@ function calculatetriangleArea(){
 
     const areaSpan = document.getElementById('triangle-area');
     areaSpan.innerText = area;
+
+    addToCalculationEntry('triangle', area);
 }
 
-
+// Rectangle Calculation
 function calculateRectangleArea(){
     const widthField = document.getElementById('rectangle-width');
     const widthValueText = widthField.value;
@@ -39,9 +42,11 @@ function calculateRectangleArea(){
 
     const rectangleAreaSpan = document.getElementById('rectangle-area');
     rectangleAreaSpan.innerText = area;
+
+    addToCalculationEntry('rectangle', area);
 }
 
-
+// Parallelogram Calculate
 function calculateParallelogramArea(){
     const base = getInputValue('parallelogram-base');
     const height = getInputValue('parallelogram-height');
@@ -51,6 +56,9 @@ function calculateParallelogramArea(){
     }
     const area = base * height;
     setElementInnerText('parallelogram-area', area);
+
+    // add to calculation entry
+    addToCalculationEntry('parallelogram', area);
 }
 
 
@@ -59,8 +67,9 @@ function calculateEllipseArea(){
     const minorRedius = getInputValue('ellipse-minor-redius');
     const area = 3.14 * majorRedius * minorRedius;
     const areaTwoDecimal = area.toFixed(2);
-
     setElementInnerText('ellipse-area', areaTwoDecimal);
+
+    addToCalculationEntry('Ellipse', areaTwoDecimal);
 }
 
 
@@ -79,3 +88,16 @@ function setElementInnerText(fieldId, area){
 }
 
 
+// add to calculation entry
+function addToCalculationEntry(areaType, area){
+    console.log(areaType + '' + area);
+    const calculationEntry = document.getElementById('calculation-entry');
+
+    const count = calculationEntry.childElementCount;
+
+    const p = document.createElement('p');
+    p.classList.add('my-4');
+    p.innerHTML = `${count + 1}. ${areaType} ${area} cm<sup>2</sup> <button class="btn btn-success btn-sm">Convert</button>`;
+
+    calculationEntry.appendChild(p);
+}
